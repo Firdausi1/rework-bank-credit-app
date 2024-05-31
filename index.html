@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Playball&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Bank Credit App</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="slideRight" id="blue-bg">
+      <div id="content1">
+        <h1>Hello there,</h1>
+        <p>Enter your person details and start your loan application</p>
+        <button class="btn btn-secondary" id="registerBtn">Sign up</button>
+      </div>
+      <div id="content2">
+        <h1>Welcome Back!</h1>
+        <p>Continue with your loan application</p>
+        <button class="btn btn-secondary" id="loginBtn">Sign in</button>
+      </div>
+    </div>
+    <div class="homeContainer">
+      <div class="leftContainer" id="loginContainer">
+        <div id="banner">
+          <p id="message"></p>
+        </div>
+        <form id="loginForm">
+          <h2>Log In</h2>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter Username"
+          />
+          <p class="account">
+            Don't have an account? <span id="registerBtnMobile">Register</span>
+          </p>
+          <button type="submit" id="login" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+      <div class="rightContainer" id="register">
+        <form id="registerForm">
+          <h2>Register to apply for a loan</h2>
+          <div class="input">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="userName" required />
+            <span id="errorName" class="errorField">field is required</span>
+          </div>
+          <div class="input">
+            <label for="amount">Account Balance:</label>
+            <input type="text" name="amount" id="amount" />
+            <span id="errorAmount" class="errorField">Enter a valid number</span>
+          </div>
+          <div class="input">
+            <label for="creditHistory">Credit History:</label>
+            <select name="creditHistory" id="creditHistory">
+              <option value="1">1 month</option>
+            </select>
+            <span id="errorCredit" class="errorField">field is required</span>
+          </div>
+          <div class="input">
+            <label for="lastDeposit">Last Deposit Date:</label>
+            <input type="date" name="lastDeposit" id="lastDeposit" />
+            <span id="errorDeposit" class="errorField">field is required</span>
+          </div>
+          <div class="input">
+            <label for="lastCollection">Last Loan Collection Date:</label>
+            <input type="date" name="lastCollection" id="lastCollection" />
+            <span id="errorCollection" class="errorField"
+              >field is required</span
+            >
+          </div>
+          <div class="grid">
+            <div class="input">
+              <label for="expectedPeriod">Loan Collection Date:</label>
+              <input
+                type="date"
+                name="expectedPeriod"
+                id="expectedPeriod"
+                oninput="getStartDate()"
+              />
+              <span id="errorExpected" class="errorField"
+                >field is required</span
+              >
+            </div>
+            <div class="input">
+              <label for="repayment">Loan Repayment Date:</label>
+              <input type="date" name="repayment" id="repayment" />
+              <span id="errorRepayment" class="errorField"
+                >field is required</span
+              >
+            </div>
+          </div>
+          <!-- <div class="input">
+            <label for="repayment">Last repayment Period:</label>
+            <div class="radioBtn">
+              <input
+                type="radio"
+                name="repayment"
+                id=""
+                value="Below 6 months"
+              />
+              <span> Below 6 months</span>
+            </div>
+            <div class="radioBtn">
+              <input
+                type="radio"
+                name="repayment"
+                id=""
+                value="Above 6 months"
+              /><span> Above 6 months</span>
+            </div>
+            <span id="errorRepayment" class="errorField"
+              >field is required</span
+            >
+          </div> -->
+          <div class="input">
+            <label for="accountType">Account Type:</label>
+            <select name="accountType" id="accountType">
+              <option value="current">Current</option>
+              <option value="savings">Savings</option>
+            </select>
+          </div>
+          <p class="account">
+            Already have an account? <span id="loginBtnMobile">Login</span>
+          </p>
+          <button type="submit" id="submitBtn" class="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

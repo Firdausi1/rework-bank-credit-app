@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playball&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Playball&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Bank Credit App</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="sideNav">
+        <div class="logoContainer">
+          <div class="logo">BankCredit</div>
+          <span class="span1"></span><span class="span2"></span>
+        </div>
+        <ul class="nav-item">
+          <li class="active">Overview</li>
+          <li>Statistics</li>
+          <li>settings</li>
+        </ul>
+      </div>
+      <div class="body">
+        <div class="header">
+          <h1>Overview</h1>
+          <button class="btn" id="logoutBtn">Log out</button>
+        </div>
+        <div class="welcomeContainer">
+          <p id="welcome"></p>
+          <!-- <span>Good to see you here</span> -->
+        </div>
+        <div class="top">
+          <div class="card balance">
+            <p>your balance</p>
+            <h2 id="balance"></h2>
+          </div>
+          <div class="card">
+            <p>account type</p>
+            <h2 id="accountType"></h2>
+          </div>
+          <div class="card">
+            <p>credit score</p>
+            <h2 id="creditScore"></h2>
+          </div>
+        </div>
+        <!-- <div class="banner">
+          <p id="message"></p>
+        </div> -->
+        <div class="bottom">
+          <div class="card apply" id="apply">
+            <div id="applyForm">
+              <p>Apply for a Loan</p>
+              <form class="applyForm">
+                <label for="loanAmount">Enter Amount:</label>
+                <input type="text" id="loanAmount" class="loan-amount" />
+                <button class="btn btn-primary" id="loanBtn" type="button">
+                  Apply
+                </button>
+              </form>
+            </div>
+            <h4 id="appliedText">
+              Oops looks like you've applied for a loan already, next
+              application date is 2024-06-30
+            </h4>
+          </div>
+          <div class="card transaction">
+            <p>Transaction History</p>
+            <ul id="history"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/loan.js"></script>
+  </body>
+</html>
