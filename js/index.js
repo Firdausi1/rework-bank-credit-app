@@ -190,6 +190,8 @@ function getTodaysDate() {
   const val = `${year}-${month}-${day}`;
 
   document.getElementById("expectedPeriod").setAttribute("min", val);
+  document.getElementById("lastDeposit").setAttribute("max", val)
+  document.getElementById("lastCollection").setAttribute("max", val)
 }
 
 function getStartDate() {
