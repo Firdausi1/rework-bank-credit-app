@@ -4,58 +4,68 @@ const accountType = document.getElementById("accountType");
 const credit = document.getElementById("creditScore");
 const appliedText = document.getElementById("appliedText");
 const applyForm = document.getElementById("applyForm");
+const errorLoan = document.getElementById("errorLoan");
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 let score = 0;
 
 document.getElementById("loanBtn").addEventListener("click", () => {
   let loanAmount = parseInt(document.getElementById("loanAmount").value);
 
-  const users = JSON.parse(localStorage.getItem("users"));
-  if (users) {
-    const user = users.find((item) => item.username === currentUser.username);
-    if (user) {
-      score = calculateCredit(user, loanAmount);
-      const date = getTodaysDate();
+  if (isNaN(loanAmount) || null) {
+    errorLoan.style.display = "inline-block";
+  } else {
+    errorLoan.style.display = "none";
+    const users = JSON.parse(localStorage.getItem("users"));
+    if (users) {
+      const user = users.find((item) => item.username === currentUser.username);
+      if (user) {
+        score = calculateCredit(user, loanAmount);
+        const date = getTodaysDate();
 
-      if (score > 30) {
-        user.amount += loanAmount;
-        user.lastCollection = date;
-        user.creditScore = score;
-        user.loanStatus = "applied";
-        saveTransaction(
-          user,
-          users,
-          `Applied for a loan of &#8358;${formatCurrency(loanAmount)}`,
-          "processing"
-        );
-        setTimeout(() => {
+        if (score > 30) {
+          user.amount += loanAmount;
+          user.lastCollection = date;
+          user.creditScore = score;
+          user.loanStatus = "applied";
           saveTransaction(
             user,
             users,
-            `Loan Application of &#8358;${formatCurrency(loanAmount)} on ${new Date().toDateString()} was successful`,
-            "approved"
+            `Applied for a loan of &#8358;${formatCurrency(loanAmount)}`,
+            "processing"
           );
-          getUser(user);
-        }, 3000);
-      } else {
-        user.creditScore = score;
-        user.loanStatus = "applied";
-        saveTransaction(
-          user,
-          users,
-          `Applied for a loan of &#8358;${formatCurrency(loanAmount)}`,
-          "processing"
-        );
-
-        setTimeout(() => {
+          setTimeout(() => {
+            saveTransaction(
+              user,
+              users,
+              `Loan Application of &#8358;${formatCurrency(
+                loanAmount
+              )} on ${new Date().toDateString()} was successful`,
+              "approved"
+            );
+            getUser(user);
+          }, 3000);
+        } else {
+          user.creditScore = score;
+          user.loanStatus = "applied";
           saveTransaction(
             user,
             users,
-            `Loan Application of &#8358;${formatCurrency(loanAmount)} on ${new Date().toDateString()} was declined`,
-            "declined"
+            `Applied for a loan of &#8358;${formatCurrency(loanAmount)}`,
+            "processing"
           );
-          getUser(user);
-        }, 3000);
+
+          setTimeout(() => {
+            saveTransaction(
+              user,
+              users,
+              `Loan Application of &#8358;${formatCurrency(
+                loanAmount
+              )} on ${new Date().toDateString()} was declined`,
+              "declined"
+            );
+            getUser(user);
+          }, 3000);
+        }
       }
     }
   }
